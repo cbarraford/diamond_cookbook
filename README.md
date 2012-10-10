@@ -58,7 +58,7 @@ When you are collecting data via snmp, you need to specify that in the definitio
       end
 ```
 
-USAGE
+Usage
 =====
 It is recommended that you create a recipe per collector, and add that recipe to the related role.
 When passing sensitive data to a diamond collector config (ie a username, password, etc), use data bags 
