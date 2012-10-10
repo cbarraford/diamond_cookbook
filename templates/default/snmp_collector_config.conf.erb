@@ -1,0 +1,17 @@
+# Options for <%= @collector_attrs[:name] %>
+
+<% @collector_attrs.each_pair do |k,v| -%>
+<% if k.to_s != "name" and k.to_s != "devices" and k.to_s != "snmp" %>
+<%= k %> = <%= v %>
+<% end %>
+<% end -%>
+
+[devices]
+
+<% @collector_attrs[:devices].each do | device | -%>
+[[<%= device.split(".")[0] %>]]
+host = <%= device %>
+port = <%= @collector_attrs[:port] %>
+community = <%= @collector_attrs[:community] %>
+<% end -%>
+

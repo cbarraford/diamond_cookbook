@@ -1,0 +1,7 @@
+### Options for <%= @collector_attrs[:name] %>
+<% @collector_attrs.each_pair do |k,v| -%>
+<% if k.to_s != "name" and k.to_s != "snmp" %>
+<%= k %> = <%= v %>
+<% end %>
+<% end -%>
+
