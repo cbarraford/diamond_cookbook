@@ -1,17 +1,16 @@
-# Options for <%= @collector_attrs[:name] %>
+# Options for <%= @params[:name] %>
 
-<% @collector_attrs.each_pair do |k,v| -%>
-<% if k.to_s != "name" and k.to_s != "devices" and k.to_s != "snmp" %>
-<%= k %> = <%= v %>
+<% @params.each_pair do |k,v| -%>
+<% if k.to_s != "name" and k.to_s != "devices" and k.to_s != "snmp" and k.to_s != "action" %>
+<%= k.to_s.gsub('__','') %> = <%= v %>
 <% end %>
 <% end -%>
 
 [devices]
 
-<% @collector_attrs[:devices].each do | device | -%>
+<% @params[:devices].each do | device | -%>
 [[<%= device.split(".")[0] %>]]
 host = <%= device %>
-port = <%= @collector_attrs[:port] %>
-community = <%= @collector_attrs[:community] %>
+port = <%= @params[:port] %>
+community = <%= @params[:community] %>
 <% end -%>
-

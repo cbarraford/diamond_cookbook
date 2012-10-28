@@ -1,23 +1,26 @@
-#definition to add diamond collector configs
-define :collector_config, :enabled => 'True', :snmp => false do
+#definition to add/remove diamond collector configs
+define :collector_config, :action => :create, :enabled => "True", :snmp => false do
+  if params[:action] == :create
+    Chef::Log.info("Create diamond collector config: #{params[:name]}.conf")
+    t = template "/etc/diamond/collectors/#{params[:name]}.conf" do
+      if params[:snmp] == false
+        source "collector_config.conf.erb"
+      else
+        source "snmp_collector_config.conf.erb"
+      end
+      cookbook "diamond"
+      owner "root"
+      group "root"
+      mode "0660"
+      variables( :params => params )
+      notifies :restart, resources(:service => "diamond")
+    end 
 
-  t = template "/etc/diamond/collectors/#{params[:name]}.conf" do
-    if params[:snmp] == false
-      source "collector_config.conf.erb"
-    else
-      source "snmp_collector_config.conf.erb"
-    end
-    cookbook "diamond"
-    owner "root"
-    group "root"
-    mode "0660"
-    variables(:collector_attrs => {} )
-    notifies :restart, resources(:service => "diamond")
-  end 
-
-  # add collector attributes
-  params.each_pair do | k,v |
-    t.variables[:collector_attrs][k] = v
+ elsif params[:action] == :delete 
+    Chef::Log.info("Deleting diamond collector config: #{params[:name]}.conf")
+    file "/etc/diamond/collectors/#{params[:name]}.conf" do
+      action :delete
+      notifies :restart, resources(:service => "diamond")
+    end 
   end
-
 end
