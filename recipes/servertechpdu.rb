@@ -6,12 +6,12 @@ include_recipe 'diamond::default'
 databag = Chef::EncryptedDataBagItem.load("passwords", "snmp")
 
 collector_config "ServerTechPDUCollector" do
-  path      node[:diamond][:collectors][:ServerPDUCollector][:path]
+  path      node[:diamond][:collectors][:ServerTechPDUCollector][:path]
   snmp      true
-  interval  node[:diamond][:collectors][:ServerPDUCollector][:interval]
-  timeout   node[:diamond][:collectors][:ServerPDUCollector][:timeout]
-  retries   node[:diamond][:collectors][:ServerPDUCollector][:retries]
-  port      node[:diamond][:collectors][:ServerPDUCollector][:port]
+  interval  node[:diamond][:collectors][:ServerTechPDUCollector][:interval]
+  timeout   node[:diamond][:collectors][:ServerTechPDUCollector][:timeout]
+  retries   node[:diamond][:collectors][:ServerTechPDUCollector][:retries]
+  port      node[:diamond][:collectors][:ServerTechPDUCollector][:port]
   community databag['community']
-  devices   node[:diamond][:collectors][:ServerPDUCollector][:devices]
+  devices   node[:diamond][:collectors][:ServerTechPDUCollector][:devices]
 end
