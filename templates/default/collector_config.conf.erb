@@ -1,5 +1,5 @@
 ### Options for <%= @params[:name] %>
-<% @params.each_pair do |k,v| -%>
+<% @params.each_pair do |k,v| -%> 
 <% if k.to_s != "name" and k.to_s != "snmp" and k.to_s != "action" %>
 <%= k.to_s.gsub('__','') %> = <%= v %>
 <% end %>

@@ -1,14 +1,14 @@
 # Options for <%= @params[:name] %>
 
-<% @params.each_pair do |k,v| -%>
+<% @params.each_pair do |k,v| -%> 
 <% if k.to_s != "name" and k.to_s != "devices" and k.to_s != "snmp" and k.to_s != "action" %>
 <%= k.to_s.gsub('__','') %> = <%= v %>
 <% end %>
-<% end -%>
+<% end -%> 
 
 [devices]
 
-<% @params[:devices].each do | device | -%>
+<% @params[:devices].each do | device | -%> 
 [[<%= device.split(".")[0] %>]]
 host = <%= device %>
 port = <%= @params[:port] %>

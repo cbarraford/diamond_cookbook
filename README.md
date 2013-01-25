@@ -50,22 +50,22 @@ When you are collecting data via snmp, you need to specify that in the definitio
         path      node[:diamond][:collectors][:SNMPInterfaceCollector][:path]
         snmp      true
         interval  node[:diamond][:collectors][:SNMPInterfaceCollector][:interval]
-        timeout   node[:diamond][:collectors][:SNMPInterfaceCollector][:timeout]
+        time__out node[:diamond][:collectors][:SNMPInterfaceCollector][:timeout]
         retries   node[:diamond][:collectors][:SNMPInterfaceCollector][:retries]
         port      node[:diamond][:collectors][:SNMPInterfaceCollector][:port]
         community node[:diamond][:collectors][:SNMPInterfaceCollector][:community]
         devices   node[:diamond][:collectors][:SNMPInterfaceCollector][:devices]
       end
 ```
+
 Whats with the double underscore ('__')?
 if a double underscore exists in the attribute name, it will be automatically removed when written to the collector config file.
 This is due to limitations within ruby code. Sometimes a attibute name may be a reserved ruby word (ie timeout), in which
 case, you can't use that key to specify an attribute for the collector. The use of double underscores ('__') is a work around for that. 
 (so 'timeout' is called as 'time__out' in the cookbook, but writes 'timeout' to the config file.
 
-Usage
+USAGE
 =====
 It is recommended that you create a recipe per collector, and add that recipe to the related role.
 When passing sensitive data to a diamond collector config (ie a username, password, etc), use data bags 
 to encrypt the values.
-
