@@ -4,25 +4,7 @@ service "diamond" do
   action [ :nothing ]
 end
 
-case node[:platform]
-  when "debian", "ubuntu"
-    package "python-pysnmp4" do
-      action :install
-    end
-
-    package "diamond" do
-      action :install
-      version node['diamond']['version']
-      notifies :restart, resources(:service => "diamond")
-    end
-
-  when "centos", "redhat", "fedora", "amazon", "scientific"
-    package "diamond" do
-      action :install
-      version node['diamond']['version']
-      notifies :restart, resources(:service => "diamond")
-    end
-end
+include_recipe "diamond::install_%s" % [node['diamond']['install_method']]
 
 service "diamond" do
   action [ :enable ]
