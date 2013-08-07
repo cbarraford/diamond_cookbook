@@ -23,8 +23,13 @@ pid_file = /var/run/diamond.pid
 # Directory to load collector modules from
 collectors_path = /usr/share/diamond/collectors/
 
-# Directory to load collector config from
+# Directory to load collector configs from
 collectors_config_path = /etc/diamond/collectors/
+
+# Directory to load handler configs from
+handlers_config_path = /etc/diamond/handlers/
+
+handlers_path = /usr/share/diamond/handlers/
 
 # Interval to reload collectors
 collectors_reload_interval = 3600
@@ -58,6 +63,9 @@ port = 2003
 
 # Socket timeout (seconds)
 timeout = 15
+
+# Batch size for metrics
+batch = 1
 
 [[GraphitePickleHandler]]
 ### Options for GraphitePickleHandler
@@ -100,6 +108,25 @@ host = 127.0.0.1
 port = 4242
 timeout = 15
 
+[[LibratoHandler]]
+user = user@example.com
+apikey = abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz01
+
+[[HostedGraphiteHandler]]
+apikey = abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz01
+timeout = 15
+batch = 1
+
+# And any other config settings from GraphiteHandler are valid here
+
+[[HttpPostHandler]]
+
+### Urp to post the metrics
+url = http://localhost:8888/
+### Metrics batch size
+batch = 100
+
+
 ################################################################################
 ### Options for collectors
 [collectors]
@@ -111,20 +138,36 @@ timeout = 15
 # Keep in mind, periods are seperators in graphite
 # hostname = my_custom_hostname
 
-# If you perfer to just use a different way of calculating the hostname
+# If you prefer to just use a different way of calculating the hostname
 # Uncomment and set this to one of these values:
-# fqdn_short  = Default. Similar to hostname -s
-# fqdn        = hostname output
-# fqdn_rev    = hostname in reverse (com.example.www)
-# uname_short = Similar to uname -n, but only the first part
-# uname_rev   = uname -r in reverse (com.example.www)
-# hostname_method = fqdn_short
+
+# smart             = Default. Tries fqdn_short. If that's localhost, uses hostname_short
+
+# fqdn_short        = Default. Similar to hostname -s
+# fqdn              = hostname output
+# fqdn_rev          = hostname in reverse (com.example.www)
+
+# uname_short       = Similar to uname -n, but only the first part
+# uname_rev         = uname -r in reverse (com.example.www)
+
+# hostname_short    = `hostname -s`
+# hostname          = `hostname`
+# hostname_rev      = `hostname` in reverse (com.example.www)
+
+# hostname_method = smart
 
 # Path Prefix and Suffix
 # you can use one or both to craft the path where you want to put metrics
 # such as: %(path_prefix)s.$(hostname)s.$(path_suffix)s.$(metric)s
-# path_prefix = servers
+path_prefix = <%= node['diamond']['path_prefix'] %>
 # path_suffix =
+
+# Path Prefix for Virtual Machines
+# If the host supports virtual machines, collectors may report per
+# VM metrics. Following OpenStack nomenclature, the prefix for
+# reporting per VM metrics is "instances", and metric foo for VM
+# bar will be reported as: instances.bar.foo...
+# instance_prefix = instances
 
 # Default Poll Interval (seconds)
 # interval = 300
@@ -151,6 +194,7 @@ keys = default
 # to increase verbosity, set DEBUG
 level = INFO
 handlers = rotated_file
+propagate = 1
 
 [handler_rotated_file]
 
