@@ -2,6 +2,7 @@ default["diamond"]["install_method"] = "package"
 default["diamond"]["graphite_server_role"] = nil
 default["diamond"]["graphite_server"] = "graphite"
 default["diamond"]["path_prefix"] = "servers"
+default["diamond"]["interval"] = "300"
 default["diamond"]["handlers"] = "diamond.handler.graphite.GraphiteHandler, diamond.handler.archive.ArchiveHandler"
 case node[:platform]
   when "ubuntu","debian"
