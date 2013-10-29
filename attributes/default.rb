@@ -4,9 +4,14 @@ default["diamond"]["graphite_server"] = "graphite"
 default["diamond"]["path_prefix"] = "servers"
 default["diamond"]["interval"] = "300"
 default["diamond"]["handlers"] = "diamond.handler.graphite.GraphiteHandler, diamond.handler.archive.ArchiveHandler"
-case node[:platform]
-  when "ubuntu","debian"
-    default[:diamond][:version] = '3.0.2'
+default["diamond"]["source_repository"] = "git://github.com/BrightcoveOS/Diamond.git"
+default["diamond"]["source_path"] = "/usr/local/share/diamond_src"
+default["diamond"]["source_reference"] = 'HEAD'
+case node["platform_family"]
+  when "debian"
+    default["diamond"]["version"] = '3.0.2'
+  when "redhat"
+    default["diamond"]["version"] = '3.0.2-0'
   else
-    default[:diamond][:version] = '3.0.2-0'
+    default["diamond"]["install_method"] = "source"
 end
