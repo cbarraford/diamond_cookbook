@@ -7,5 +7,6 @@ version          "1.0.17"
 name             "diamond"
 
 supports         'ubuntu'
-supports         'centos'
+supports         'debian'
+supports         'redhat', 'centos', 'scientific', 'amazon', 'fedora'
 
