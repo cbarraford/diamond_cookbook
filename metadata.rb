@@ -10,3 +10,5 @@ supports         'ubuntu'
 supports         'debian'
 supports         'redhat', 'centos', 'scientific', 'amazon', 'fedora'
 
+depends          'apt'
+depends          'yum'
