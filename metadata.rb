@@ -8,7 +8,8 @@ name             "diamond"
 
 supports         'ubuntu'
 supports         'debian'
-supports         'redhat', 'centos', 'scientific', 'amazon', 'fedora'
+supports         'redhat'
+supports         'centos'
 
 depends          'apt'
 depends          'yum'
