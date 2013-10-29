@@ -1,18 +1,19 @@
-*.gem
-*.rbc
-.bundle
-.config
-coverage
-InstalledFiles
-lib/bundler/man
-pkg
-rdoc
-spec/reports
-test/tmp
-test/version_tmp
-tmp
+.vagrant
+Berksfile.lock
+Berksfile
+VagrantFile
+Thorfile
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+/cookbooks
 
-# YARD artifacts
-.yardoc
-_yardoc
-doc/
+# Bundler
+Gemfile.lock
+Gemfile
+bin/*
+.bundle/*
+
