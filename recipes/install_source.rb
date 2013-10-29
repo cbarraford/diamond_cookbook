@@ -1,20 +1,19 @@
 include_recipe "build-essential"
+include_recipe "git"
 
 case node['platform_family']
 when "debian"
-  if node['platform'] == "ubuntu" && node['platform_version'].to_f < 10.10
-    package "git-core"
-  else
-    package "git"
-  end
   # needed to generate deb package
   package "devscripts"
+  package "git"
   package "python-support"
+  package "python-configobj"
   package "python-mock"
   package "cdbs"
-else
-  package "git"
+when "redhat"
+  package "python-configobj"
   package "rpm-build"
+  package "git"
 end
 
 # TODO: move source directory to an attribute
