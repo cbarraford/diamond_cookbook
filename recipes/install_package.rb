@@ -1,5 +1,5 @@
-case node[:platform]
-  when "debian", "ubuntu"
+case node["platform_family"]
+  when "debian"
     package "python-pysnmp4" do
       action :install
     end
@@ -10,7 +10,7 @@ case node[:platform]
       notifies :restart, resources(:service => "diamond")
     end
 
-  when "centos", "redhat", "fedora", "amazon", "scientific"
+  when "redhat"
     package "diamond" do
       action :install
       version node['diamond']['version']
