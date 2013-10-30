@@ -1,7 +1,6 @@
 case node["platform_family"]
   when "debian"
-    include_recipe "apt::default"
-    
+
     package "python-pysnmp4" do
       action :install
     end
