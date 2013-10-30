@@ -1,11 +1,10 @@
 include_recipe "build-essential"
-include_recipe "git"
+include_recipe "git::default"
 
 case node['platform_family']
 when "debian"
   # needed to generate deb package
   package "devscripts"
-  package "git"
   package "python-support"
   package "python-configobj"
   package "python-mock"
@@ -13,7 +12,6 @@ when "debian"
 when "redhat"
   package "python-configobj"
   package "rpm-build"
-  package "git"
 end
 
 # TODO: move source directory to an attribute

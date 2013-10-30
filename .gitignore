@@ -10,10 +10,11 @@ Thorfile
 .*.sw[a-z]
 *.un~
 /cookbooks
-
+.DS_Store
 # Bundler
 Gemfile.lock
 Gemfile
 bin/*
 .bundle/*
+.gitignore
 
