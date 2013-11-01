@@ -3,6 +3,8 @@ include_recipe "git::default"
 
 case node['platform_family']
 when "debian"
+  include_recipe "apt::default"
+  
   # needed to generate deb package
   package "devscripts"
   package "python-support"
@@ -10,6 +12,8 @@ when "debian"
   package "python-mock"
   package "cdbs"
 when "redhat"
+  include_recipe "yum::default"
+  
   package "python-configobj"
   package "rpm-build"
 end

@@ -27,7 +27,7 @@ template "/etc/diamond/diamond.conf" do
   owner "root"
   group "root"
   mode "0644"
-  notifies :restart, resources(:service => "diamond")
+  notifies :restart, "service[diamond]"
   variables(
     :graphite_ip => graphite_ip
   )

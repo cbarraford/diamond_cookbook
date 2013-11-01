@@ -5,10 +5,11 @@ case node["platform_family"]
       action :install
     end
 
-    package "diamond" do
+  package "diamond" do
+      source "#{node["diamond"]["source_path"]}"
       action :install
       version node['diamond']['version']
-      notifies :restart, resources(:service => "diamond")
+      notifies :restart, "service[diamond]"
     end
 
   when "redhat"
@@ -17,6 +18,6 @@ case node["platform_family"]
     package "diamond" do
       action :install
       version node['diamond']['version']
-      notifies :restart, resources(:service => "diamond")
+      notifies :restart, "service[diamond]"
     end
 end
