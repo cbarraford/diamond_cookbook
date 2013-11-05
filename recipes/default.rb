@@ -27,19 +27,14 @@ template "/etc/diamond/diamond.conf" do
   owner "root"
   group "root"
   mode "0644"
-  notifies :restart, resources(:service => "diamond")
+  notifies :restart, "service[diamond]"
   variables(
     :graphite_ip => graphite_ip
   )
 end
 
-#install basic collector configs
-include_recipe 'diamond::diskusage'
-include_recipe 'diamond::diskspace'
-include_recipe 'diamond::vmstat'
-include_recipe 'diamond::memory'
-include_recipe 'diamond::network'
-include_recipe 'diamond::tcp'
-include_recipe 'diamond::loadavg'
-include_recipe 'diamond::cpu'
 
+# Install collectors
+node['diamond']['add_collectors'].each do |collector|
+  include_recipe "diamond::#{collector}"
+end
