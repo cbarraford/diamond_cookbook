@@ -1,0 +1,23 @@
+Encoding:
+  Enabled: false
+
+LineLength:
+  Enabled: false
+
+NumericLiterals:
+  MinDigits: 7
+
+MethodLength:
+  Max: 20
+
+CyclomaticComplexity:
+  Max: 10
+
+SingleSpaceBeforeFirstArg:
+  Enabled: false
+
+Next:
+  Enabled: false
+
+FileName:
+  Enabled: false
