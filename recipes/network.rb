@@ -3,6 +3,6 @@
 include_recipe 'diamond::default'
 
 collector_config 'NetworkCollector' do
-  interfaces node[:diamond][:collectors][:NetworkCollector][:interfaces]
-  byte_unit node[:diamond][:collectors][:NetworkCollector][:byte_unit]
+  interfaces node['diamond']['collectors']['NetworkCollector']['interfaces']
+  byte_unit node['diamond']['collectors']['NetworkCollector']['byte_unit']
 end

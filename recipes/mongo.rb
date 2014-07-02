@@ -8,6 +8,6 @@ package 'pymongo' do
 end
 
 collector_config 'MongoDBCollector' do
-  path  node[:diamond][:collectors][:MongoDBCollector][:path]
-  host  node[:diamond][:collectors][:MongoDBCollector][:host]
+  path  node['diamond']['collectors']['MongoDBCollector']['path']
+  host  node['diamond']['collectors']['MongoDBCollector']['host']
 end
