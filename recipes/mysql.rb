@@ -13,4 +13,3 @@ collector_config 'MySQLCollector' do
   user    mysql['username']
   passwd  mysql['password']
 end
-

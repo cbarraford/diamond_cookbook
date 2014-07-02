@@ -8,4 +8,3 @@ collector_config 'NginxCollector' do
   req_port  node[:diamond][:collectors][:NginxCollector][:req_port]
   req_path  node[:diamond][:collectors][:NginxCollector][:req_path]
 end
-

@@ -17,4 +17,3 @@ if node['diamond']['snmp'] == 'true'
     devices   node[:diamond][:collectors][:NetscalerSNMPCollector][:devices]
   end
 end
-
