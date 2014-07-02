@@ -1,9 +1,9 @@
-maintainer       "Brightcove"
-maintainer_email "cbarraford@brightcove.com"
+maintainer       "Chad Barraford"
+maintainer_email "cbarraford@gmail.com"
 license          "All rights reserved"
 description      "Installs/Configures diamond"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "1.0.17"
+version          "2.0"
 name             "diamond"
 
 supports         'ubuntu'

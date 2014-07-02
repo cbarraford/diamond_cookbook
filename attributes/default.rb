@@ -1,4 +1,4 @@
-default["diamond"]["install_method"] = "package"
+default["diamond"]["install_method"] = "source"
 default["diamond"]["graphite_server_role"] = nil
 default["diamond"]["graphite_server"] = "graphite"
 default["diamond"]["path_prefix"] = "servers"
