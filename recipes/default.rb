@@ -10,7 +10,7 @@ if node['diamond']['graphite_server_role'].nil?
   graphite_ip = node['diamond']['graphite_server']
 else
   if Chef::Config[:solo]
-    Chef::Log.warn("This recipe uses search. Chef Solo does not support search.")
+    Chef::Log.warn('This recipe uses search. Chef Solo does not support search.')
   else
     graphite_nodes = search(:node, "role:#{node['diamond']['graphite_server_role']}")
     if graphite_nodes.empty?
