@@ -1,7 +1,7 @@
 # install diamond and enable basic collectors
 
 service 'diamond' do
-  action [ :nothing ]
+  action [:nothing]
 end
 
 include_recipe "diamond::install_#{node['diamond']['install_method']}"
@@ -36,5 +36,5 @@ node['diamond']['add_collectors'].each do |collector|
 end
 
 service 'diamond' do
-  action [ :enable ]
+  action [:enable]
 end
