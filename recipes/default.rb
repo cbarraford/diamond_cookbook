@@ -29,7 +29,6 @@ template '/etc/diamond/diamond.conf' do
   )
 end
 
-
 # Install collectors
 node['diamond']['add_collectors'].each do |collector|
   include_recipe "diamond::#{collector}"
