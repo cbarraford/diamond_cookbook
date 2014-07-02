@@ -17,7 +17,7 @@ else
       Chef::Log.warn('No nodes returned from search')
       graphite_ip = node['diamond']['graphite_server']
     else
-      graphite_ip = graphite_nodes[0]['ipaddress']
+      graphite_ip = graphite_nodes[0]['fqdn']
     end
   end
 end
