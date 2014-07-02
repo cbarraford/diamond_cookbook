@@ -2,7 +2,7 @@
 define :collector_config, action: :create, enabled: 'True', snmp: false do
   if params[:action] == :create
     Chef::Log.info("Create diamond collector config: #{params[:name]}.conf")
-    t = template "/etc/diamond/collectors/#{params[:name]}.conf" do
+    template "/etc/diamond/collectors/#{params[:name]}.conf" do
       if params[:snmp] == false
         source 'collector_config.conf.erb'
       else
