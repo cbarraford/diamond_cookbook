@@ -12,7 +12,7 @@ define :collector_config, action: :create, enabled: 'True', snmp: false do
       owner 'root'
       group 'root'
       mode '0660'
-      variables( params: params )
+      variables(params: params)
       notifies :restart, resources(service: 'diamond')
     end
 
