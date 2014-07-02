@@ -6,7 +6,7 @@ when 'debian'
   end
 
   package 'diamond' do
-    source "#{node['diamond']['source_path']}"
+    source node['diamond']['source_path']
     action :install
     version node['diamond']['version']
     notifies :restart, 'service[diamond]'
