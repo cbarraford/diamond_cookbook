@@ -2,7 +2,7 @@
 
 include_recipe 'diamond::default'
 
-#load data bag
+# load data bag
 mysql = Chef::EncryptedDataBagItem.load('passwords', 'mysql')
 
 collector_config 'MySQLCollector' do

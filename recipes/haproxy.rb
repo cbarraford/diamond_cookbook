@@ -2,7 +2,7 @@
 
 include_recipe 'diamond::default'
 
-#load the data bag
+# load the data bag
 databag = Chef::EncryptedDataBagItem.load('passwords', 'haproxy')
 
 collector_config 'HAProxyCollector' do

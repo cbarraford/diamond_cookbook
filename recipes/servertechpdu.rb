@@ -2,7 +2,7 @@
 
 include_recipe 'diamond::default'
 
-#load databag
+# load databag
 databag = Chef::EncryptedDataBagItem.load('passwords', 'snmp')
 
 collector_config 'ServerTechPDUCollector' do

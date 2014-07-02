@@ -1,4 +1,4 @@
-#definition to add/remove diamond collector configs
+# definition to add/remove diamond collector configs
 define :collector_config, action: :create, enabled: 'True', snmp: false do
   if params[:action] == :create
     Chef::Log.info("Create diamond collector config: #{params[:name]}.conf")
