@@ -15,6 +15,6 @@ if node['diamond']['snmp'] == 'true'
     port      node[:diamond][:collectors][:NetscalerSNMPCollector][:port]
     community databag['community']
     devices   node[:diamond][:collectors][:NetscalerSNMPCollector][:devices]
-  end 
-end 
+  end
+end
 

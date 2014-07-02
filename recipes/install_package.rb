@@ -14,7 +14,7 @@ case node['platform_family']
 
   when 'redhat'
     include_recipe 'yum::default'
-    
+
     package 'diamond' do
       action :install
       version node['diamond']['version']

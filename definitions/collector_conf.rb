@@ -14,13 +14,13 @@ define :collector_config, :action => :create, :enabled => 'True', :snmp => false
       mode '0660'
       variables( :params => params )
       notifies :restart, resources(:service => 'diamond')
-    end 
+    end
 
- elsif params[:action] == :delete 
+ elsif params[:action] == :delete
     Chef::Log.info("Deleting diamond collector config: #{params[:name]}.conf")
     file "/etc/diamond/collectors/#{params[:name]}.conf" do
       action :delete
       notifies :restart, resources(:service => 'diamond')
-    end 
+    end
   end
 end

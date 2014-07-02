@@ -4,7 +4,7 @@ include_recipe 'git::default'
 case node['platform_family']
 when 'debian'
   include_recipe 'apt::default'
-  
+
   # needed to generate deb package
   package 'devscripts'
   package 'python-support'
@@ -13,7 +13,7 @@ when 'debian'
   package 'cdbs'
 when 'redhat'
   include_recipe 'yum::default'
-  
+
   package 'python-configobj'
   package 'rpm-build'
 end
@@ -33,13 +33,13 @@ when 'debian'
     action :nothing
     notifies :run, 'execute[install diamond]'
   end
-  
-  execute 'install diamond' do 
+
+  execute 'install diamond' do
     command "cd #{node['diamond']['source_path']};dpkg -i build/diamond_*_all.deb"
     action :nothing
     notifies :restart, 'service[diamond]'
   end
-  
+
 else
   # TODO: test this
   execute 'build diamond' do
@@ -47,8 +47,8 @@ else
     action :nothing
     notifies :run, 'execute[install diamond]'
   end
-  
-  execute 'install diamond' do 
+
+  execute 'install diamond' do
     command "cd #{node['diamond']['source_path']};rpm -ivh dist/*.noarch.rpm"
     action :nothing
     notifies :restart, 'service[diamond]'
