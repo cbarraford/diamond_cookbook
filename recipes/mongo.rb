@@ -3,8 +3,7 @@
 include_recipe 'diamond::default'
 
 package 'pymongo' do
-  if platform?('debian', 'ubuntu')
-    package_name 'python-pymongo'
+  package_name 'python-pymongo' if platform?('debian', 'ubuntu')
   end
   action :install
 end
