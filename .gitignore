@@ -11,3 +11,5 @@ Thorfile
 .DS_Store
 bin/*
 .bundle/*
+*.lock
+.kitchen
