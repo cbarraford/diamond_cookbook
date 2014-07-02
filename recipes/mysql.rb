@@ -3,9 +3,9 @@
 include_recipe 'diamond::default'
 
 #load data bag
-mysql = Chef::EncryptedDataBagItem.load("passwords", "mysql")
+mysql = Chef::EncryptedDataBagItem.load('passwords', 'mysql')
 
-collector_config "MySQLCollector" do
+collector_config 'MySQLCollector' do
   path    node[:diamond][:collectors][:MySQLCollector][:path]
   host    node[:diamond][:collectors][:MySQLCollector][:host]
   port    node[:diamond][:collectors][:MySQLCollector][:port]

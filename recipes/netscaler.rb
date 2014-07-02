@@ -3,10 +3,10 @@
 include_recipe 'diamond::default'
 
 #load databag
-databag = Chef::EncryptedDataBagItem.load("passwords", "snmp")
+databag = Chef::EncryptedDataBagItem.load('passwords', 'snmp')
 
-if node['diamond']['snmp'] == "true"
-  collector_config "NetscalerSNMPCollector" do
+if node['diamond']['snmp'] == 'true'
+  collector_config 'NetscalerSNMPCollector' do
     path      node[:diamond][:collectors][:NetscalerSNMPCollector][:path]
     snmp      true
     interval  node[:diamond][:collectors][:NetscalerSNMPCollector][:interval]

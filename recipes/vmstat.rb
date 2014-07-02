@@ -2,4 +2,4 @@
 
 include_recipe 'diamond::default'
 
-collector_config "VMStatCollector"
+collector_config 'VMStatCollector'

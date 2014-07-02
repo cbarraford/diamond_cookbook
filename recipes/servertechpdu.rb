@@ -3,9 +3,9 @@
 include_recipe 'diamond::default'
 
 #load databag
-databag = Chef::EncryptedDataBagItem.load("passwords", "snmp")
+databag = Chef::EncryptedDataBagItem.load('passwords', 'snmp')
 
-collector_config "ServerTechPDUCollector" do
+collector_config 'ServerTechPDUCollector' do
   path      node[:diamond][:collectors][:ServerTechPDUCollector][:path]
   snmp      true
   interval  node[:diamond][:collectors][:ServerTechPDUCollector][:interval]
