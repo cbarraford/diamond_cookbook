@@ -4,11 +4,7 @@ service "diamond" do
   action [ :nothing ]
 end
 
-include_recipe "diamond::install_%s" % [node['diamond']['install_method']]
-
-service "diamond" do
-  action [ :enable ]
-end
+include_recipe "diamond::install_#{node['diamond']['install_method']}"
 
 if node['diamond']['graphite_server_role'].nil?
   graphite_ip = node['diamond']['graphite_server']
@@ -37,4 +33,8 @@ end
 # Install collectors
 node['diamond']['add_collectors'].each do |collector|
   include_recipe "diamond::#{collector}"
+end
+
+service "diamond" do
+  action [ :enable ]
 end
