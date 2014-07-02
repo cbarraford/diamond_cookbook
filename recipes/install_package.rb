@@ -1,23 +1,23 @@
 case node['platform_family']
-  when 'debian'
+when 'debian'
 
-    package 'python-pysnmp4' do
-      action :install
-    end
+  package 'python-pysnmp4' do
+    action :install
+  end
 
   package 'diamond' do
-      source "#{node['diamond']['source_path']}"
-      action :install
-      version node['diamond']['version']
-      notifies :restart, 'service[diamond]'
-    end
+    source "#{node['diamond']['source_path']}"
+    action :install
+    version node['diamond']['version']
+    notifies :restart, 'service[diamond]'
+  end
 
-  when 'redhat'
-    include_recipe 'yum::default'
+when 'redhat'
+  include_recipe 'yum::default'
 
-    package 'diamond' do
-      action :install
-      version node['diamond']['version']
-      notifies :restart, 'service[diamond]'
-    end
+  package 'diamond' do
+    action :install
+    version node['diamond']['version']
+    notifies :restart, 'service[diamond]'
+  end
 end

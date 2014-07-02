@@ -9,10 +9,10 @@ default['diamond']['source_path'] = '/usr/local/share/diamond_src'
 default['diamond']['source_reference'] = 'master'
 default['diamond']['add_collectors'] = %w(cpu diskspace diskusage loadavg memory network vmstat tcp)
 case node['platform_family']
-  when 'debian'
-    default['diamond']['version'] = '3.0.2'
-  when 'redhat'
-    default['diamond']['version'] = '3.0.2-0'
-  else
-    default['diamond']['install_method'] = 'source'
+when 'debian'
+  default['diamond']['version'] = '3.0.2'
+when 'redhat'
+  default['diamond']['version'] = '3.0.2-0'
+else
+  default['diamond']['install_method'] = 'source'
 end
