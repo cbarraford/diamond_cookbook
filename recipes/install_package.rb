@@ -12,7 +12,7 @@ when 'debian'
     notifies :restart, 'service[diamond]'
   end
 
-when 'redhat'
+when 'rhel'
   include_recipe 'yum::default'
 
   package 'diamond' do

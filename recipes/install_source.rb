@@ -11,7 +11,7 @@ when 'debian'
   package 'python-configobj'
   package 'python-mock'
   package 'cdbs'
-when 'redhat'
+when 'rhel'
   include_recipe 'yum::default'
 
   package 'python-configobj'
@@ -23,7 +23,7 @@ git node['diamond']['source_path'] do
   repository node['diamond']['source_repository']
   reference node['diamond']['source_reference']
   action :sync
-  notifies :run, 'execute[build diamond]'
+  notifies :run, 'execute[build diamond]', :immediately
 end
 
 case node['platform_family']
@@ -31,7 +31,7 @@ when 'debian'
   execute 'build diamond' do
     command "cd #{node['diamond']['source_path']};make builddeb"
     action :nothing
-    notifies :run, 'execute[install diamond]'
+    notifies :run, 'execute[install diamond]', :immediately
   end
 
   execute 'install diamond' do
@@ -45,7 +45,7 @@ else
   execute 'build diamond' do
     command "cd #{node['diamond']['source_path']};make buildrpm"
     action :nothing
-    notifies :run, 'execute[install diamond]'
+    notifies :run, 'execute[install diamond]', :immediately
   end
 
   execute 'install diamond' do
