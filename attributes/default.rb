@@ -11,7 +11,7 @@ default['diamond']['add_collectors'] = %w(cpu diskspace diskusage loadavg memory
 case node['platform_family']
 when 'debian'
   default['diamond']['version'] = '3.0.2'
-when 'redhat'
+when 'rhel'
   default['diamond']['version'] = '3.0.2-0'
 else
   default['diamond']['install_method'] = 'source'
