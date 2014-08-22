@@ -1,6 +1,4 @@
 .vagrant
-Berksfile.lock
-Berksfile
 VagrantFile
 Thorfile
 *~
@@ -11,10 +9,9 @@ Thorfile
 *.un~
 /cookbooks
 .DS_Store
-# Bundler
-Gemfile.lock
-Gemfile
 bin/*
 .bundle/*
-.gitignore
+*.lock
+.kitchen
 
+Berksfile.lock

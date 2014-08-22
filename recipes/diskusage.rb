@@ -2,4 +2,4 @@
 
 include_recipe 'diamond::default'
 
-collector_config "DiskUsageCollector"
+collector_config 'DiskUsageCollector'

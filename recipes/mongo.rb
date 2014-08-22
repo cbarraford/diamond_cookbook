@@ -2,14 +2,12 @@
 
 include_recipe 'diamond::default'
 
-package "pymongo" do
-  if platform?("debian", "ubuntu")
-    package_name "python-pymongo"
-  end
+package 'pymongo' do
+  package_name 'python-pymongo' if platform?('debian', 'ubuntu')
   action :install
 end
 
-collector_config "MongoDBCollector" do
-  path  node[:diamond][:collectors][:MongoDBCollector][:path]
-  host  node[:diamond][:collectors][:MongoDBCollector][:host]
+collector_config 'MongoDBCollector' do
+  path  node['diamond']['collectors']['MongoDBCollector']['path']
+  host  node['diamond']['collectors']['MongoDBCollector']['host']
 end
