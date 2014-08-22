@@ -2,7 +2,7 @@
 
 <% @params.each_pair do |k,v| -%> 
 <% if k.to_s != "name" and k.to_s != "devices" and k.to_s != "snmp" and k.to_s != "action" %>
-<%= k.to_s.gsub('__','') %> = <%= v %>
+<%= k.to_s.gsub('__','') %> = <%= v.respond_to?(:call) ? v.call : v %>
 <% end %>
 <% end -%> 
 
