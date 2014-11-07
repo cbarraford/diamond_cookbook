@@ -2,6 +2,7 @@ default['diamond']['install_method'] = 'source'
 default['diamond']['graphite_server_role'] = nil
 default['diamond']['graphite_server'] = 'graphite'
 default['diamond']['path_prefix'] = 'servers'
+default['diamond']['hostname_method'] = 'smart'
 default['diamond']['interval'] = '300'
 default['diamond']['handlers'] = 'diamond.handler.graphite.GraphiteHandler, diamond.handler.archive.ArchiveHandler'
 default['diamond']['source_repository'] = 'git://github.com/BrightcoveOS/Diamond.git'
