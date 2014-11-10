@@ -154,7 +154,9 @@ batch = 100
 # hostname          = `hostname`
 # hostname_rev      = `hostname` in reverse (com.example.www)
 
+<% unless node['diamond']['hostname_method'].nil? -%>
 hostname_method = <%= node['diamond']['hostname_method'] %>
+<% end -%>
 
 # Path Prefix and Suffix
 # you can use one or both to craft the path where you want to put metrics
