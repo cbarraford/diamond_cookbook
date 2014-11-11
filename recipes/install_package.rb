@@ -5,7 +5,7 @@ when 'debian'
     action :install
   end
 
-  package 'diamond' do
+  dpkg_package 'diamond' do
     source node['diamond']['source_path']
     action :install
     version node['diamond']['version']
