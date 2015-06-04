@@ -3,7 +3,7 @@ maintainer_email 'cbarraford@gmail.com'
 license          'All rights reserved'
 description      'Installs/Configures diamond'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '2.0.3'
+version          '2.0.4'
 name             'diamond'
 
 supports         'ubuntu'

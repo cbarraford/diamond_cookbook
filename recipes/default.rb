@@ -29,7 +29,9 @@ template '/etc/diamond/diamond.conf' do
   mode '0644'
   notifies :restart, 'service[diamond]'
   variables(
-    graphite_ip: graphite_ip
+    graphite_ip: graphite_ip,
+    graphite_port: node['diamond']['graphite_port'],
+    graphite_pickle_port: node['diamond']['graphite_pickle_port']
   )
 end
 
