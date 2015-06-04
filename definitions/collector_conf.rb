@@ -11,7 +11,7 @@ define :collector_config, action: :create, enabled: 'True', snmp: false do
       cookbook 'diamond'
       owner 'root'
       group 'root'
-      mode '0660'
+      mode '0664'
       variables(params: params)
       notifies :restart, 'service[diamond]'
     end
