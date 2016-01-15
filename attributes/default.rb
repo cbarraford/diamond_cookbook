@@ -1,6 +1,7 @@
 default['diamond']['user'] = 'diamond'
 default['diamond']['group'] = 'nogroup'
 default['diamond']['install_method'] = 'source' # file | package | source
+default['diamond']['package_name'] = 'diamond'
 default['diamond']['version'] = ''
 default['diamond']['graphite_server_role'] = nil
 default['diamond']['graphite_server'] = 'graphite'
