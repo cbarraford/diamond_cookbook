@@ -4,7 +4,7 @@ service 'diamond' do
   action [:nothing]
 end
 
-include_recipe "diamond::install_#{node['diamond']['install_method']}"
+include_recipe "diamond::_install_#{node['diamond']['install_method']}"
 
 if node['diamond']['graphite_server_role'].nil?
   graphite_ip = node['diamond']['graphite_server']
