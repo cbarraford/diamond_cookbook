@@ -1,6 +1,6 @@
 # definition to add/remove diamond collector configs
 define :collector_config, action: :create, enabled: 'True', snmp: false,
-  owner: 'root', group: 'root' do
+  owner: 'diamond', group: 'nogroup' do
 
   if params[:action] == :create
     Chef::Log.info("Create diamond collector config: #{params[:name]}.conf")

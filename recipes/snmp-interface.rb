@@ -2,6 +2,10 @@
 
 include_recipe 'diamond::default'
 
+package 'python-pysnmp4' do
+  action :install
+end
+
 # load databag
 databag = Chef::EncryptedDataBagItem.load('passwords', 'snmp')
 

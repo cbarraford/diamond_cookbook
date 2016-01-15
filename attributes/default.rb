@@ -1,4 +1,8 @@
-default['diamond']['install_method'] = 'source'
+default['diamond']['user'] = 'diamond'
+default['diamond']['group'] = 'nogroup'
+default['diamond']['install_method'] = 'source' # file | package | source
+default['diamond']['package_name'] = 'diamond'
+default['diamond']['version'] = ''
 default['diamond']['graphite_server_role'] = nil
 default['diamond']['graphite_server'] = 'graphite'
 default['diamond']['graphite_port'] = '2003'
@@ -11,11 +15,3 @@ default['diamond']['source_repository'] = 'git://github.com/BrightcoveOS/Diamond
 default['diamond']['source_path'] = '/usr/local/share/diamond_src'
 default['diamond']['source_reference'] = 'master'
 default['diamond']['add_collectors'] = %w(cpu diskspace diskusage loadavg memory network vmstat tcp)
-case node['platform_family']
-when 'debian'
-  default['diamond']['version'] = '3.0.2'
-when 'rhel'
-  default['diamond']['version'] = '3.0.2-0'
-else
-  default['diamond']['install_method'] = 'source'
-end
