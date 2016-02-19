@@ -32,7 +32,9 @@ template '/etc/diamond/diamond.conf' do
   variables(
     graphite_ip: graphite_ip,
     graphite_port: node['diamond']['graphite_port'],
-    graphite_pickle_port: node['diamond']['graphite_pickle_port']
+    graphite_pickle_port: node['diamond']['graphite_pickle_port'],
+    statsd_host: node['diamond']['statsd_host'],
+    statsd_port: node['diamond']['statsd_port']
   )
 end
 
