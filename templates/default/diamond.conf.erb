@@ -100,8 +100,8 @@ col_metric  = metric
 col_value   = value
 
 [[StatsdHandler]]
-host = 127.0.0.1
-port = 8125
+host = <%= @statsd_host %>
+port = <%= @statsd_port %>
 
 [[TSDBHandler]]
 host = 127.0.0.1
