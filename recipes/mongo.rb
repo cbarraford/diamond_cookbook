@@ -8,6 +8,7 @@ package 'pymongo' do
 end
 
 collector_config 'MongoDBCollector' do
+  perms           node['diamond']['collectors']['config_perms']
   owner node['diamond']['owner']
   group node['diamond']['group']
   path  node['diamond']['collectors']['MongoDBCollector']['path']

@@ -16,4 +16,6 @@ default['diamond']['handlers'] = 'diamond.handler.graphite.GraphiteHandler, diam
 default['diamond']['source_repository'] = 'git://github.com/BrightcoveOS/Diamond.git'
 default['diamond']['source_path'] = '/usr/local/share/diamond_src'
 default['diamond']['source_reference'] = 'master'
+default['diamond']['log_retention'] = 7  #days
 default['diamond']['add_collectors'] = %w(cpu diskspace diskusage loadavg memory network vmstat tcp)
+default['diamond']['collectors']['config_perms'] = '0644'

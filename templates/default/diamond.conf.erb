@@ -50,7 +50,7 @@ keys = rotated_file
 log_file = /var/log/diamond/archive.log
 
 # Number of days to keep archive log files
-days = 7
+days = <%= node['diamond']['log_retention'] %>
 
 [[GraphiteHandler]]
 ### Options for GraphiteHandler
@@ -204,7 +204,7 @@ class = handlers.TimedRotatingFileHandler
 level = DEBUG
 formatter = default
 # rotate at midnight, each day and keep 7 days
-args = ('/var/log/diamond/diamond.log', 'midnight', 1, 7)
+args = ('/var/log/diamond/diamond.log', 'midnight', 1, <%= node['diamond']['log_retention'] %>)
 
 [formatter_default]
 
