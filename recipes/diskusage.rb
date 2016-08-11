@@ -2,4 +2,8 @@
 
 include_recipe 'diamond::default'
 
-collector_config 'DiskUsageCollector'
+collector_config 'DiskUsageCollector' do
+  owner            node['diamond']['owner']
+  group            node['diamond']['group']
+
+end

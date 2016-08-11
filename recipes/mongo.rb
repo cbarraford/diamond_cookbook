@@ -8,6 +8,8 @@ package 'pymongo' do
 end
 
 collector_config 'MongoDBCollector' do
+  owner node['diamond']['owner']
+  group node['diamond']['group']
   path  node['diamond']['collectors']['MongoDBCollector']['path']
   host  node['diamond']['collectors']['MongoDBCollector']['host']
 end

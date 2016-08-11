@@ -2,4 +2,7 @@
 
 include_recipe 'diamond::default'
 
-collector_config 'CPUCollector'
+collector_config 'CPUCollector' do
+  owner            node['diamond']['owner']
+  group            node['diamond']['group']
+end

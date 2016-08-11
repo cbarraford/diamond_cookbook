@@ -6,6 +6,8 @@ include_recipe 'diamond::default'
 databag = Chef::EncryptedDataBagItem.load('passwords', 'haproxy')
 
 collector_config 'HAProxyCollector' do
+  owner        node['diamond']['owner']
+  group        node['diamond']['group']
   path         node['diamond']['collectors']['HAProxyCollector']['path']
   stats_uri    node['diamond']['collectors']['HAProxyCollector']['stats_uri']
   stats_user   databag['standard']['stats_user']
