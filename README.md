@@ -69,3 +69,15 @@ USAGE
 It is recommended that you create a recipe per collector, and add that recipe to the related role.
 When passing sensitive data to a diamond collector config (ie a username, password, etc), use data bags 
 to encrypt the values.
+
+Publishing to [Chef Supermarket](https://supermarket.getchef.com/)
+=====
+
+To update the cookbook on the supermarket use
+[stove](https://supermarket.chef.io/tools/stove)
+
+**Example**
+```bash
+stove login --username cbarraford --key ~/.chef/cbarraford.pem
+stove
+```
