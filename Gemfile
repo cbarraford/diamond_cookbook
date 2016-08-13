@@ -8,6 +8,8 @@ gem 'berkshelf'
 group :development do
   gem 'stove'
   gem 'foodcritic'
+  gem 'rake-foodcritic'
+  gem 'cookstyle'
   gem 'rubocop'
 end
 
