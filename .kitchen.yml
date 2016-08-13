@@ -2,8 +2,17 @@ driver_plugin: vagrant
 driver_config:
   require_chef_omnibus: true
 
+provisioner:
+    name: chef_zero
+
 platforms:
   - name: ubuntu-12.04
+    run_list:
+      - recipe[apt::default]
+  - name: ubuntu-14.04
+    run_list:
+      - recipe[apt::default]
+  - name: ubuntu-16.04
     run_list:
       - recipe[apt::default]
 
