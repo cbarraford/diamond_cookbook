@@ -9,14 +9,14 @@ when 'debian'
   package 'devscripts'
   case node['platform_version']
   when '16.04'
-    package_target = "/tmp/python-support_all.deb"
+    package_target = '/tmp/python-support_all.deb'
     remote_file package_target do
-      source "http://launchpadlibrarian.net/109052632/python-support_1.0.15_all.deb"
+      source 'http://launchpadlibrarian.net/109052632/python-support_1.0.15_all.deb'
       mode 0644
-      checksum "1b8498b47a08354026e7b43bb4dc42562c502e7c5def5d02b9f8837c043499f5" # SHA256
+      checksum '1b8498b47a08354026e7b43bb4dc42562c502e7c5def5d02b9f8837c043499f5' # SHA256
     end
 
-    dpkg_package "python-support" do
+    dpkg_package 'python-support' do
       source package_target
       action :install
     end
