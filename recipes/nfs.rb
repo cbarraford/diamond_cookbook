@@ -2,5 +2,5 @@
 include_recipe 'diamond::default'
 
 collector_config 'NFSServerCollector' do
-  path    node['diamond']['collectors']['NFSServerCollector']['path']
+  path node['diamond']['collectors']['NFSServerCollector']['path']
 end

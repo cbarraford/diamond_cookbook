@@ -9,9 +9,8 @@ include_recipe "diamond::_install_#{node['diamond']['install_method']}"
 if node['diamond']['graphite_server_role'].nil?
   graphite_ip = node['diamond']['graphite_server']
 else
-  if Chef::Config[:solo]
-    Chef::Log.warn('This recipe uses search. Chef Solo does not support search.')
-  else
+  Chef::Log.warn('This recipe uses search. Chef Solo does not support search.') if Chef::Config[:solo]
+  unless Chef::Config[:solo]
     graphite_nodes = search(:node, "role:#{node['diamond']['graphite_server_role']}")
     if graphite_nodes.empty?
       Chef::Log.warn('No nodes returned from search')
@@ -21,7 +20,6 @@ else
     end
   end
 end
-
 
 template '/etc/diamond/diamond.conf' do
   source 'diamond.conf.erb'
