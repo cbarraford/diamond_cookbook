@@ -13,7 +13,7 @@ MethodLength:
 CyclomaticComplexity:
   Max: 10
 
-SingleSpaceBeforeFirstArg:
+SpaceBeforeFirstArg:
   Enabled: false
 
 Next:

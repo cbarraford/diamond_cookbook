@@ -1,7 +1,6 @@
 # definition to add/remove diamond collector configs
 define :collector_config, action: :create, enabled: 'True', snmp: false,
-  owner: 'diamond', group: 'nogroup' do
-
+                          owner: 'diamond', group: 'nogroup' do
   if params[:action] == :create
     Chef::Log.info("Create diamond collector config: #{params[:name]}.conf")
     owner = params.delete(:owner)
@@ -20,7 +19,7 @@ define :collector_config, action: :create, enabled: 'True', snmp: false,
       notifies :restart, 'service[diamond]'
     end
 
- elsif params[:action] == :delete
+  elsif params[:action] == :delete
     Chef::Log.info("Deleting diamond collector config: #{params[:name]}.conf")
     file "/etc/diamond/collectors/#{params[:name]}.conf" do
       action :delete
