@@ -78,6 +78,6 @@ To update the cookbook on the supermarket use
 
 **Example**
 ```bash
-stove login --username sethvargo --key ~/.chef/cbarraford.pem
+stove login --username cbarraford --key ~/.chef/cbarraford.pem
 stove
 ```
