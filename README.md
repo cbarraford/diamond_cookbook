@@ -70,6 +70,11 @@ It is recommended that you create a recipe per collector, and add that recipe to
 When passing sensitive data to a diamond collector config (ie a username, password, etc), use data bags 
 to encrypt the values.
 
+CI
+=====
+Using [travis-ci](https://travis-ci.org/CBarraford/diamond_cookbook) for
+testing changes.
+
 Publishing to [Chef Supermarket](https://supermarket.getchef.com/)
 =====
 
