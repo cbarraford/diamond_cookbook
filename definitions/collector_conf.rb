@@ -23,7 +23,7 @@ define :collector_config, action: :create, enabled: 'True', snmp: false,
       notifies :restart, 'service[diamond]'
     end
 
- elsif params[:action] == :delete
+  elsif params[:action] == :delete
     Chef::Log.info("Deleting diamond collector config: #{params[:name]}.conf")
     file "/etc/diamond/collectors/#{params[:name]}.conf" do
       action :delete

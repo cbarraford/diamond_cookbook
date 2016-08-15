@@ -1,2 +1,2 @@
-source "https://api.berkshelf.com"
-metadata 
+source 'https://api.berkshelf.com'
+metadata

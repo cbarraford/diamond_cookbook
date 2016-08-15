@@ -1,17 +1,20 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
-#ruby-gemset=diamond-cookbook
+ruby '2.3.1'
+# ruby-gemset=diamond-cookbook
 
 gem 'rake'
-gem 'berkshelf', '~> 3.1.3'
+gem 'berkshelf'
 
 group :development do
-  gem 'foodcritic', '~> 4.0'
-  gem 'rubocop', '~> 0.24.0'
+  gem 'stove'
+  gem 'foodcritic'
+  gem 'rake-foodcritic'
+  gem 'cookstyle'
+  gem 'rubocop'
 end
 
 group :integration do
   gem 'serverspec'
-  gem 'test-kitchen', '~> 1.0'
+  gem 'test-kitchen'
   gem 'kitchen-vagrant'
 end

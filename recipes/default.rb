@@ -1,6 +1,15 @@
 # install diamond and enable basic collectors
 
+if 'ubuntu' == node['platform']
+  if Chef::VersionConstraint.new('>= 15.04').include?(node['platform_version'])
+    service_provider = Chef::Provider::Service::Systemd
+  elsif Chef::VersionConstraint.new('>= 12.04').include?(node['platform_version'])
+    service_provider = Chef::Provider::Service::Upstart
+  end
+end
+
 service 'diamond' do
+  provider service_provider
   action [:nothing]
 end
 
@@ -9,9 +18,8 @@ include_recipe "diamond::_install_#{node['diamond']['install_method']}"
 if node['diamond']['graphite_server_role'].nil?
   graphite_ip = node['diamond']['graphite_server']
 else
-  if Chef::Config[:solo]
-    Chef::Log.warn('This recipe uses search. Chef Solo does not support search.')
-  else
+  Chef::Log.warn('This recipe uses search. Chef Solo does not support search.') if Chef::Config[:solo]
+  unless Chef::Config[:solo]
     graphite_nodes = search(:node, "role:#{node['diamond']['graphite_server_role']}")
     if graphite_nodes.empty?
       Chef::Log.warn('No nodes returned from search')
@@ -21,7 +29,6 @@ else
     end
   end
 end
-
 
 template '/etc/diamond/diamond.conf' do
   source 'diamond.conf.erb'
@@ -52,5 +59,6 @@ node['diamond']['add_collectors'].each do |collector|
 end
 
 service 'diamond' do
+  provider service_provider
   action [:enable]
 end
