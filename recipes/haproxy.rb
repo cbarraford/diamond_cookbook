@@ -6,7 +6,7 @@ include_recipe 'diamond::default'
 databag = Chef::EncryptedDataBagItem.load('passwords', 'haproxy')
 
 collector_config 'HAProxyCollector' do
-  perms           node['diamond']['collectors']['config_perms']
+  perms node['diamond']['collectors']['config_perms']
   owner        node['diamond']['owner']
   group        node['diamond']['group']
   path         node['diamond']['collectors']['HAProxyCollector']['path']

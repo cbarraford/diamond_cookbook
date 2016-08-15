@@ -8,7 +8,7 @@ databag = Chef::EncryptedDataBagItem.load('passwords', 'snmp')
 collector_config 'ServerTechPDUCollector' do
   owner            node['diamond']['owner']
   group            node['diamond']['group']
-  perms           node['diamond']['collectors']['config_perms']
+  perms node['diamond']['collectors']['config_perms']
   path      node['diamond']['collectors']['ServerTechPDUCollector']['path']
   snmp      true
   interval  node['diamond']['collectors']['ServerTechPDUCollector']['interval']

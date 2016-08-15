@@ -8,7 +8,7 @@ mysql = Chef::EncryptedDataBagItem.load('passwords', 'mysql')
 collector_config 'MySQLCollector' do
   owner   node['diamond']['owner']
   group   node['diamond']['group']
-  perms           node['diamond']['collectors']['config_perms']
+  perms node['diamond']['collectors']['config_perms']
   path    node['diamond']['collectors']['MySQLCollector']['path']
   host    node['diamond']['collectors']['MySQLCollector']['host']
   port    node['diamond']['collectors']['MySQLCollector']['port']
