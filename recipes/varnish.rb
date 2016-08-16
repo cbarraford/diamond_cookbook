@@ -3,5 +3,8 @@
 include_recipe 'diamond::default'
 
 collector_config 'VarnishCollector' do
-  path node['diamond']['collectors']['VarnishCollector']['path']
+  owner  node['diamond']['owner']
+  group  node['diamond']['group']
+  perms  node['diamond']['collectors']['config_perms']
+  path   node['diamond']['collectors']['VarnishCollector']['path']
 end
