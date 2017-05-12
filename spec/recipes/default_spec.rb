@@ -176,7 +176,7 @@ describe 'diamond::default' do
   shared_examples_for 'install from source: sync and build' do
     it 'clone "/usr/local/share/diamond_src" repo' do
       expect(chef_run).to sync_git('/usr/local/share/diamond_src').with(
-        repository: 'git://github.com/BrightcoveOS/Diamond.git',
+        repository: 'git://github.com/python-diamond/Diamond.git',
         reference: 'master'
       )
       resource = chef_run.git('/usr/local/share/diamond_src')
