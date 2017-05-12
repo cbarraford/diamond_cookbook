@@ -194,32 +194,81 @@ describe 'diamond::default' do
     end
   end
 
+  shared_examples_for 'install from source: Debian family' do
+    it 'install "devscripts" package' do
+      expect(chef_run).to install_package('devscripts')
+    end
+
+    it 'install "python-configobj" package' do
+      expect(chef_run).to install_package('python-configobj')
+    end
+
+    it 'install "python-mock" package' do
+      expect(chef_run).to install_package('python-mock')
+    end
+
+    it 'install "cdbs" package' do
+      expect(chef_run).to install_package('cdbs')
+    end
+  end
+
   context 'with default node attributes' do
-    context 'Ubuntu 14.04' do
-      let(:chef_run) { ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '14.04').converge(described_recipe) }
+    context 'Debian' do
+      let(:chef_run) { ChefSpec::SoloRunner.new(platform: 'debian', version: '8.7').converge(described_recipe) }
 
       it_behaves_like 'default collector configs'
-
       it_behaves_like 'install from source: sync and build'
-
-      it 'install "devscripts" package' do
-        expect(chef_run).to install_package('devscripts')
-      end
+      it_behaves_like 'install from source: Debian family'
 
       it 'install "python-support" package' do
         expect(chef_run).to install_package('python-support')
       end
 
-      it 'install "python-configobj" package' do
-        expect(chef_run).to install_package('python-configobj')
+      it 'install "python-pkg-resources" package' do
+        expect(chef_run).to install_package('python-pkg-resources')
       end
 
-      it 'install "python-mock" package' do
-        expect(chef_run).to install_package('python-mock')
+      it 'create "/etc/diamond/diamond.conf" template' do
+        expect(chef_run).to create_template('/etc/diamond/diamond.conf').with(
+          source: 'diamond.conf.erb',
+          owner: 'diamond',
+          group: 'nogroup',
+          mode: '0644',
+          variables: {
+            graphite_ip: 'graphite',
+            graphite_pickle_port: '2004',
+            graphite_port: '2003',
+            statsd_host: 'localhost',
+            statsd_port: '8125',
+          }
+        )
       end
 
-      it 'install "cdbs" package' do
-        expect(chef_run).to install_package('cdbs')
+      it 'create "/etc/default/diamond" template' do
+        expect(chef_run).to create_template('/etc/default/diamond').with(
+          source: 'diamond-env.erb',
+          owner: 'diamond',
+          group: 'nogroup',
+          mode: '0644'
+        )
+      end
+
+      it 'enable "diamond" service' do
+        expect(chef_run).to enable_service('diamond')
+      end
+    end
+  end
+
+  context 'with default node attributes' do
+    context 'Ubuntu 14.04' do
+      let(:chef_run) { ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '14.04').converge(described_recipe) }
+
+      it_behaves_like 'default collector configs'
+      it_behaves_like 'install from source: sync and build'
+      it_behaves_like 'install from source: Debian family'
+
+      it 'install "python-support" package' do
+        expect(chef_run).to install_package('python-support')
       end
 
       it 'create "/etc/diamond/diamond.conf" template' do
@@ -256,12 +305,8 @@ describe 'diamond::default' do
       let(:chef_run) { ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04').converge(described_recipe) }
 
       it_behaves_like 'default collector configs'
-
       it_behaves_like 'install from source: sync and build'
-
-      it 'install "devscripts" package' do
-        expect(chef_run).to install_package('devscripts')
-      end
+      it_behaves_like 'install from source: Debian family'
 
       it 'create "/tmp/python-support_all.deb" file' do
         expect(chef_run).to create_remote_file('/tmp/python-support_all.deb').with(
@@ -273,18 +318,6 @@ describe 'diamond::default' do
 
       it 'install "python-support" package' do
         expect(chef_run).to install_dpkg_package('python-support')
-      end
-
-      it 'install "python-configobj" package' do
-        expect(chef_run).to install_package('python-configobj')
-      end
-
-      it 'install "python-mock" package' do
-        expect(chef_run).to install_package('python-mock')
-      end
-
-      it 'install "cdbs" package' do
-        expect(chef_run).to install_package('cdbs')
       end
 
       it 'create "/etc/diamond/diamond.conf" template' do

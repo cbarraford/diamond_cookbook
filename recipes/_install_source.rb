@@ -7,8 +7,7 @@ when 'debian'
 
   # needed to generate deb package
   package 'devscripts'
-  case node['platform_version']
-  when '16.04'
+  if node['platform'] == 'ubuntu' && node['platform_version'].to_f >= 16.04
     package_target = '/tmp/python-support_all.deb'
     remote_file package_target do
       source 'http://launchpadlibrarian.net/109052632/python-support_1.0.15_all.deb'
@@ -23,6 +22,11 @@ when 'debian'
   else
     package 'python-support'
   end
+
+  if node['platform'] == 'debian'
+    package 'python-pkg-resources'
+  end
+
   package 'python-configobj'
   package 'python-mock'
   package 'cdbs'
