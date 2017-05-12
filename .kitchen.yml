@@ -1,9 +1,12 @@
-driver_plugin: vagrant
-driver_config:
-  require_chef_omnibus: true
+driver:
+  name: vagrant
+
+verifier:
+  name: inspec
+  format: doc
 
 provisioner:
-    name: chef_zero
+  name: chef_zero
 
 platforms:
   - name: ubuntu-14.04
