@@ -27,10 +27,3 @@ platforms:
       pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
-
-suites:
-  - name: default
-    run_list:
-      - recipe[diamond::cpu]
-      - recipe[diamond::memory]
-      - recipe[diamond::diskspace]
