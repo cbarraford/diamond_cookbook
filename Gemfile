@@ -6,6 +6,7 @@ gem 'rake'
 gem 'berkshelf'
 
 group :development do
+  gem 'chefspec'
   gem 'stove'
   gem 'foodcritic'
   gem 'rake-foodcritic'
