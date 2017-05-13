@@ -9,6 +9,8 @@ provisioner:
   name: chef_zero
 
 platforms:
+  - name: centos-6.9
+  - name: centos-7.3
   - name: debian-7.11
     # Set due to https://github.com/test-kitchen/kitchen-vagrant/issues/293
     driver:

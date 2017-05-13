@@ -14,4 +14,6 @@ collector_config 'ServerTechPDUCollector' do
   port      node['diamond']['collectors']['ServerTechPDUCollector']['port']
   community databag['community']
   devices   node['diamond']['collectors']['ServerTechPDUCollector']['devices']
+  owner     node['diamond']['user']
+  group     node['diamond']['group']
 end

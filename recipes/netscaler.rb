@@ -14,5 +14,7 @@ collector_config 'NetscalerSNMPCollector' do
   port      node['diamond']['collectors']['NetscalerSNMPCollector']['port']
   community databag['community']
   devices   node['diamond']['collectors']['NetscalerSNMPCollector']['devices']
+  owner     node['diamond']['user']
+  group     node['diamond']['group']
   only_if { node['diamond']['snmp'] == 'true' }
 end

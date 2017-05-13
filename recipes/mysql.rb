@@ -12,4 +12,6 @@ collector_config 'MySQLCollector' do
   db      node['diamond']['collectors']['MySQLCollector']['db']
   user    mysql['username']
   passwd  mysql['password']
+  owner   node['diamond']['user']
+  group   node['diamond']['group']
 end

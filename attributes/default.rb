@@ -1,5 +1,8 @@
 default['diamond']['user'] = 'diamond'
-default['diamond']['group'] = 'nogroup'
+default['diamond']['group'] = value_for_platform_family(
+  'rhel' => 'nobody',
+  'default' => 'nogroup'
+)
 default['diamond']['install_method'] = 'source' # file | package | source
 default['diamond']['package_name'] = 'diamond'
 default['diamond']['version'] = ''

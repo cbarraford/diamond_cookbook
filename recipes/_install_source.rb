@@ -34,6 +34,7 @@ when 'rhel'
   include_recipe 'yum::default'
 
   package 'python-configobj'
+  package 'python-setuptools'
   package 'rpm-build'
 end
 
