@@ -221,6 +221,10 @@ describe 'diamond::default' do
       expect(chef_run).to install_package('devscripts')
     end
 
+    it 'install "python-pkg-resources" package' do
+      expect(chef_run).to install_package('python-pkg-resources')
+    end
+
     it 'install "python-configobj" package' do
       expect(chef_run).to install_package('python-configobj')
     end
@@ -291,10 +295,6 @@ describe 'diamond::default' do
 
       it 'install "python-support" package' do
         expect(chef_run).to install_package('python-support')
-      end
-
-      it 'install "python-pkg-resources" package' do
-        expect(chef_run).to install_package('python-pkg-resources')
       end
 
       it 'create "/etc/default/diamond" template' do

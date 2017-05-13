@@ -23,10 +23,7 @@ when 'debian'
     package 'python-support'
   end
 
-  if node['platform'] == 'debian' # rubocop:disable Style/IfUnlessModifier
-    package 'python-pkg-resources'
-  end
-
+  package 'python-pkg-resources'
   package 'python-configobj'
   package 'python-mock'
   package 'cdbs'
