@@ -10,4 +10,6 @@ end
 collector_config 'MongoDBCollector' do
   path  node['diamond']['collectors']['MongoDBCollector']['path']
   host  node['diamond']['collectors']['MongoDBCollector']['host']
+  owner node['diamond']['user']
+  group node['diamond']['group']
 end

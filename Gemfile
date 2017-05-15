@@ -6,6 +6,7 @@ gem 'rake'
 gem 'berkshelf'
 
 group :development do
+  gem 'chefspec'
   gem 'stove'
   gem 'foodcritic'
   gem 'rake-foodcritic'
@@ -14,7 +15,7 @@ group :development do
 end
 
 group :integration do
-  gem 'serverspec'
-  gem 'test-kitchen'
+  gem 'kitchen-inspec'
   gem 'kitchen-vagrant'
+  gem 'test-kitchen'
 end

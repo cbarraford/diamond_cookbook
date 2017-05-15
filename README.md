@@ -8,7 +8,7 @@ Diamond is a python daemon that collects system metrics and publishes them to Gr
 capable of collecting cpu, memory, network, i/o, load and disk metrics.  Additionally,
 it features an API for implementing custom collectors for gathering metrics from almost any source.
 
-The documentation can be found on our [wiki](https://github.com/BrightcoveOS/Diamond/wiki). For your
+The documentation can be found on our [wiki](https://github.com/python-diamond/Diamond/wiki). For your
 convenience the wiki is setup as a submodule of this checkout. You can get it via running
 
     git submodule init
@@ -35,7 +35,7 @@ You can override these default settings by passing additional parameters. Below 
     end
 ```
 
-This example is enabling the DiskSpaceCollector while passing addition settings to specify which filesystems to mine data 
+This example is enabling the DiskSpaceCollector while passing addition settings to specify which filesystems to mine data
 and to exclude certain directories (regex). Read the documentation/collector source code for information on what parameters
 each collector has.
 It is recommended that instead of passing values directly, inherit them from the node (as show belown).
@@ -64,13 +64,13 @@ When you are collecting data via snmp, you need to specify that in the definitio
 Whats with the double underscore ('__')?
 if a double underscore exists in the attribute name, it will be automatically removed when written to the collector config file.
 This is due to limitations within ruby code. Sometimes a attibute name may be a reserved ruby word (ie timeout), in which
-case, you can't use that key to specify an attribute for the collector. The use of double underscores ('__') is a work around for that. 
+case, you can't use that key to specify an attribute for the collector. The use of double underscores ('__') is a work around for that.
 (so 'timeout' is called as 'time__out' in the cookbook, but writes 'timeout' to the config file.
 
 USAGE
 =====
 It is recommended that you create a recipe per collector, and add that recipe to the related role.
-When passing sensitive data to a diamond collector config (ie a username, password, etc), use data bags 
+When passing sensitive data to a diamond collector config (ie a username, password, etc), use data bags
 to encrypt the values.
 
 CI

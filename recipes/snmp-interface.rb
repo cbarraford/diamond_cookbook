@@ -18,4 +18,6 @@ collector_config 'SNMPInterfaceCollector' do
   port      node['diamond']['collectors']['SNMPInterfaceCollector']['port']
   community databag['community']
   devices   node['diamond']['collectors']['SNMPInterfaceCollector']['devices']
+  owner     node['diamond']['user']
+  group     node['diamond']['group']
 end

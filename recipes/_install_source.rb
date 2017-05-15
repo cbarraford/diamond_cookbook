@@ -7,8 +7,7 @@ when 'debian'
 
   # needed to generate deb package
   package 'devscripts'
-  case node['platform_version']
-  when '16.04'
+  if node['platform'] == 'ubuntu' && node['platform_version'].to_f >= 16.04
     package_target = '/tmp/python-support_all.deb'
     remote_file package_target do
       source 'http://launchpadlibrarian.net/109052632/python-support_1.0.15_all.deb'
@@ -23,6 +22,8 @@ when 'debian'
   else
     package 'python-support'
   end
+
+  package 'python-pkg-resources'
   package 'python-configobj'
   package 'python-mock'
   package 'cdbs'
@@ -30,6 +31,7 @@ when 'rhel'
   include_recipe 'yum::default'
 
   package 'python-configobj'
+  package 'python-setuptools'
   package 'rpm-build'
 end
 
@@ -55,6 +57,14 @@ when 'debian'
     notifies :restart, 'service[diamond]'
   end
 
+  # The deb package includes init.d and init files
+  # So that chef uses the correct provider, remove the upstart file
+  # on debian since the is not an upstart system
+  if node['platform'] == 'debian'
+    file '/etc/init/diamond.conf' do
+      action :delete
+    end
+  end
 else
   # TODO: test this
   execute 'build diamond' do

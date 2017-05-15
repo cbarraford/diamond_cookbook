@@ -17,3 +17,5 @@ depends          'apt'
 depends          'yum'
 depends          'build-essential'
 depends          'git'
+
+chef_version     '>= 12.1'

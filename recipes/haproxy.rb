@@ -10,4 +10,6 @@ collector_config 'HAProxyCollector' do
   stats_uri    node['diamond']['collectors']['HAProxyCollector']['stats_uri']
   stats_user   databag['standard']['stats_user']
   stats_pass   databag['standard']['stats_pass']
+  owner        node['diamond']['user']
+  group        node['diamond']['group']
 end
