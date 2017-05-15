@@ -60,10 +60,9 @@ when 'debian'
   # The deb package includes init.d and init files
   # So that chef uses the correct provider, remove the upstart file
   # on debian since the is not an upstart system
-  if node['platform'] == 'debian'
-    file '/etc/init/diamond.conf' do
-      action :delete
-    end
+  file '/etc/init/diamond.conf' do
+    action :delete
+    only_if { node['platform'] == 'debian' }
   end
 else
   # TODO: test this
