@@ -13,8 +13,8 @@ describe 'diamond::default' do
             action: :create,
             enabled: 'True',
             snmp: false,
-            name: 'CPUCollector'
-          }
+            name: 'CPUCollector',
+          },
         }
       )
     end
@@ -44,8 +44,8 @@ describe 'diamond::default' do
             ).join(', '),
             exclude_filters: '/export/home',
             byte_unit: 'byte',
-            name: 'DiskSpaceCollector'
-          }
+            name: 'DiskSpaceCollector',
+          },
         }
       )
     end
@@ -61,8 +61,8 @@ describe 'diamond::default' do
             action: :create,
             enabled: 'True',
             snmp: false,
-            name: 'DiskUsageCollector'
-          }
+            name: 'DiskUsageCollector',
+          },
         }
       )
     end
@@ -78,8 +78,8 @@ describe 'diamond::default' do
             action: :create,
             enabled: 'True',
             snmp: false,
-            name: 'LoadAverageCollector'
-          }
+            name: 'LoadAverageCollector',
+          },
         }
       )
     end
@@ -95,8 +95,8 @@ describe 'diamond::default' do
             action: :create,
             enabled: 'True',
             snmp: false,
-            name: 'MemoryCollector'
-          }
+            name: 'MemoryCollector',
+          },
         }
       )
     end
@@ -114,8 +114,8 @@ describe 'diamond::default' do
             snmp: false,
             interfaces: 'eth,pbond,bond',
             byte_unit: 'megabit',
-            name: 'NetworkCollector'
-          }
+            name: 'NetworkCollector',
+          },
         }
       )
     end
@@ -131,8 +131,8 @@ describe 'diamond::default' do
             action: :create,
             enabled: 'True',
             snmp: false,
-            name: 'VMStatCollector'
-          }
+            name: 'VMStatCollector',
+          },
         }
       )
     end
@@ -166,8 +166,8 @@ describe 'diamond::default' do
               ActiveOpens
               PassiveOpens
             ).join(', '),
-            name: 'TCPCollector'
-          }
+            name: 'TCPCollector',
+          },
         }
       )
     end
@@ -185,7 +185,7 @@ describe 'diamond::default' do
           graphite_pickle_port: '2004',
           graphite_port: '2003',
           statsd_host: 'localhost',
-          statsd_port: '8125'
+          statsd_port: '8125',
         }
       )
     end
