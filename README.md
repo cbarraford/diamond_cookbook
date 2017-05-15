@@ -89,3 +89,9 @@ To update the cookbook on the supermarket use
 stove login --username cbarraford --key ~/.chef/cbarraford.pem
 stove
 ```
+
+Generate a new CHANGELOG file via
+[github-changelog-generator](https://github.com/skywinder/github-changelog-generator)
+```
+github_changelog_generator
+```
