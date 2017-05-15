@@ -12,6 +12,7 @@ group :development do
   gem 'rake-foodcritic'
   gem 'cookstyle'
   gem 'rubocop'
+  gem 'github_changelog_generator'
 end
 
 group :integration do

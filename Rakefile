@@ -1,5 +1,7 @@
 #!/usr/bin/env rake
 
+require 'github_changelog_generator/task'
+
 # Style tests. cookstyle (rubocop) and Foodcritic
 namespace :style do
   begin
