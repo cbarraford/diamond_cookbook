@@ -1,7 +1,5 @@
 #!/usr/bin/env rake
 
-require 'github_changelog_generator/task'
-
 # Style tests. cookstyle (rubocop) and Foodcritic
 namespace :style do
   begin
@@ -21,7 +19,7 @@ namespace :style do
     FoodCritic::Rake::LintTask.new(:chef) do |t|
       t.options = {
         fail_tags: ['any'],
-        progress: true
+        progress: true,
       }
     end
   rescue LoadError

@@ -25,3 +25,6 @@ FileName:
 AllCops:
   Exclude:
     - 'bin/*'
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma
